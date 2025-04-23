@@ -1,3 +1,54 @@
+'''FUNCTION TicketPriceCalculator
+    // Display welcome message
+    DISPLAY "Welcome to the Movie Theater Ticket Price Calculator!"
+    
+    // Get and validate age
+    INPUT age as integer
+    IF age < 0 THEN
+        DISPLAY "Error: Age cannot be negative."
+        EXIT program
+    END IF
+    
+    // Get and validate movie type
+    INPUT movie_type as string (prompt for regular/premium)
+    CONVERT movie_type to lowercase and remove whitespace
+    
+    IF movie_type is not "regular" AND movie_type is not "premium" THEN
+        DISPLAY "Error: Invalid movie type. Please enter 'regular' or 'premium'."
+        EXIT program
+    END IF
+    
+    // Calculate ticket price based on age and movie type
+    IF age <= 12 THEN // Children
+        IF movie_type equals "regular" THEN
+            SET ticket_price to 8
+        ELSE // premium
+            SET ticket_price to 10
+        END IF
+    ELSE IF age >= 60 THEN // Seniors
+        IF movie_type equals "regular" THEN
+            SET ticket_price to 10
+        ELSE // premium
+            SET ticket_price to 12
+        END IF
+    ELSE // Adults (13-59)
+        IF movie_type equals "regular" THEN
+            SET ticket_price to 12
+        ELSE // premium
+            SET ticket_price to 14
+        END IF
+    END IF
+    
+    // Display ticket details
+    DISPLAY "Ticket Details:"
+    DISPLAY "Age: " + age
+    DISPLAY "Movie Type: " + capitalize(movie_type)
+    DISPLAY "Ticket Price: $" + format_decimal(ticket_price, 2)
+    DISPLAY "Enjoy your movie!"
+END FUNCTION
+
+CALL TicketPriceCalculator'''
+
 # Ticket Price Calculator
 
 # Display welcome message
